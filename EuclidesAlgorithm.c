@@ -7,11 +7,11 @@
 
 
 int inverse(int z, int a){
-	int res=0, cont=0, cociente=0, inverso=0, val_a_inicial=0;
+	int res=0, cont=0, cociente=0, inverso=0, val_z_inicial=0;
 	//Matriz donde se guardarán las ecuaciones generadas
 	int **ecuaciones=(int**)malloc(sizeof(int*));
 	//Obtención de ecuaciones a partir del Algoritmo de Euclides
-	val_a_inicial=a;
+	val_z_inicial=z;
 	do{
 		res=a%z;
 		cociente=a/z;
@@ -31,7 +31,7 @@ int inverse(int z, int a){
 	else
 		inverso=extendedAlgorithm(ecuaciones, cont);
 		if(cont%2==0)
-			inverso=val_a_inicial-(inverso%val_a_inicial);
+			inverso=val_z_inicial-(inverso%val_z_inicial);
 	return inverso;
 }
 
