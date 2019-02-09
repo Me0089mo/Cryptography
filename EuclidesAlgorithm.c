@@ -40,19 +40,21 @@ int inverse(int z, int a){
 }
 
 int gcd(int a, int b){
-	int res=0,cociente=0, cont=0;
+	int res=0,cont=0;
+	int *residuos;
 	if(a>b){
 		a=b;
 		b=a;
 	}
 	do{
 		res=b%a;
-		cociente=b/a;
+		residuos=(int*)malloc(sizeof(int));
+		residuos[cont]=res;
 		b=a;
 		a=res;
 		cont++;
 	}while(res!=0);
-	return ecuaciones[cont-2][0];
+	return residuos[cont-2];
 }
 
 //Función recursiva
