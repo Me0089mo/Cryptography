@@ -10,5 +10,8 @@ Descripción: Obtiene el inverso multiplicativo de un número con base en el alg
 */
 int inverse(int z, int a);
 
+//Función que retorna el gcd de dos números
+int gcd(int a, int b);
+
 //Función recursiva que calcula el inverso multiplicativo del número a de la función "inverse"
 int extendedAlgorithm(int **ecuaciones, int numEc);

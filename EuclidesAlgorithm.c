@@ -13,26 +13,46 @@ int inverse(int z, int a){
 	//Obtención de ecuaciones a partir del Algoritmo de Euclides
 	val_z_inicial=z;
 	do{
-		res=a%z;
-		cociente=a/z;
+		res=z%a;
+		cociente=z/a;
 		ecuaciones[cont]=(int*)malloc(sizeof(int)*4);
 		ecuaciones[cont][0]=res;
 		ecuaciones[cont][1]=a;
 		ecuaciones[cont][2]=z;
 		ecuaciones[cont][3]=cociente;
-		a=z;
-		z=res;
+		z=a;
+		a=res;
 		cont++;
 	}while(res!=0);
 	//Sustitución de ecuaciones a partit del Algoritmo Extendido de Euclides
 	cont-=2;
-	if(cont==-1)
-		inverso=1;
+	if(ecuaciones[cont][0]==1){
+		if(cont==-1)
+			inverso=1;
+		else
+			inverso=extendedAlgorithm(ecuaciones, cont);
+			if(cont%2==0)
+				inverso=val_z_inicial-(inverso%val_z_inicial);
+		return inverso;
+	}
 	else
-		inverso=extendedAlgorithm(ecuaciones, cont);
-		if(cont%2==0)
-			inverso=val_z_inicial-(inverso%val_z_inicial);
-	return inverso;
+		return -1;
+}
+
+int gcd(int a, int b){
+	int res=0,cociente=0, cont=0;
+	if(a>b){
+		a=b;
+		b=a;
+	}
+	do{
+		res=b%a;
+		cociente=b/a;
+		b=a;
+		a=res;
+		cont++;
+	}while(res!=0);
+	return ecuaciones[cont-2][0];
 }
 
 //Función recursiva
